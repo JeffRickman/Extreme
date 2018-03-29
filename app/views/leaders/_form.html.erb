@@ -1,0 +1,82 @@
+<%= form_with(model: leader, local: true) do |form| %>
+  <% if leader.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(leader.errors.count, "error") %> prohibited this leader from being saved:</h2>
+
+      <ul>
+      <% leader.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="form-style-2">
+
+
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :leader_name %>
+      </div>
+      <div> &nbsp;<div>
+      <div class="field">
+        <%= form.label :dob %>
+        <%= form.date_select :dob, id: :leader_dob %>
+      </div>
+      <div> &nbsp;<div>
+      <div class="field">
+        <%= form.label :sex %>
+        <%= form.text_field :sex, id: :leader_sex %>
+      </div>
+      <div> &nbsp;<div>
+      <div class="field">
+        <%= form.label :address_l1ne1 %>
+        <%= form.text_field :address_l1ne1, id: :leader_address_l1ne1 %>
+      </div>
+      <div> &nbsp;<div>
+      <div class="field">
+        <%= form.label :address_line2 %>
+        <%= form.text_field :address_line2, id: :leader_address_line2 %>
+      </div>
+      <div> &nbsp;<div>
+      <div class="field">
+        <%= form.label :phone %>
+        <%= form.text_field :phone, id: :leader_phone %>
+      </div>
+      <div> &nbsp;<div>
+      <div class="field">
+        <%= form.label :email %>
+        <%= form.text_field :email, id: :leader_email %>
+      </div>
+      <div> &nbsp;<div>
+      <div class="field">
+        <%= form.label :diet_status %>
+        <%= form.check_box :diet_status, id: :leader_diet_status %>
+      </div>
+      <div> &nbsp;<div>
+      <div class="field">
+        <%= form.label :diet %>
+        <%= form.text_field :diet, id: :leader_diet %>
+      </div>
+      <div> &nbsp;<div>
+      <div class="field">
+        <%= form.label :allergy_status %>
+        <%= form.check_box :allergy_status, id: :leader_allergy_status %>
+      </div>
+      <div> &nbsp;<div>
+      <div class="field">
+        <%= form.label :allergy %>
+        <%= form.text_field :allergy, id: :leader_allergy %>
+      </div>
+      <div> &nbsp;<div>
+      <div class="field">
+        <%= form.label :status %>
+        <%= form.text_field :status, id: :leader_status %>
+      </div>
+      <div> &nbsp;<div>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+      <div> &nbsp;<div>
+  </div>
+<% end %>

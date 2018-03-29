@@ -1,0 +1,43 @@
+<%= form_with(model: programevent, local: true) do |form| %>
+  <% if programevent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(programevent.errors.count, "error") %> prohibited this programevent from being saved:</h2>
+
+      <ul>
+      <% programevent.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :programevent_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :program_id %>
+    <%= form.text_field :program_id, id: :programevent_program_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :programevent_description %>
+  </div>
+<!--
+   t.string "name"
+    t.string "description"
+    t.date "event_date"
+    t.string "address_line1"
+    t.string "address_line2"
+    t.string "leader_name"
+    t.string "leader_phone"
+    t.text "details"
+    t.string "status"
+  -->
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

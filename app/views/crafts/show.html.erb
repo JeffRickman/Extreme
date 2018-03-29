@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @craft.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @craft.category %>
+</p>
+
+<p>
+  <strong>Copyright:</strong>
+  <%= @craft.copyright %>
+</p>
+
+<p>
+  <strong>Equipment:</strong>
+  <%= @craft.equipment %>
+</p>
+
+<p>
+  <strong>Instructions:</strong>
+  <%= @craft.instructions %>
+</p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @craft.activity %>
+</p>
+
+<%= link_to 'Edit', edit_craft_path(@craft) %> |
+<%= link_to 'Back', crafts_path %>

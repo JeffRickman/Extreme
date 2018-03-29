@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @programevent.name %>
+</p>
+
+<p>
+  <strong>Program:</strong>
+  <%= @programevent.program.name %>
+  <strong>Description:</strong>
+<!--  <%= @programevent.description %> -->
+
+
+</p>
+
+<%= link_to 'Edit', edit_programevent_path(@programevent) %> |
+<%= link_to 'Back', programevents_path %>

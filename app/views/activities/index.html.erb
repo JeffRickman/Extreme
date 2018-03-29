@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<h1> Activities Index </h1>
+<p><i class="fas fa-home"></i></p>
+
+<!-- insert filter note filter column 1 in filter function -->
+
+<h4><%= link_to "New", new_activity_path, :class => 'btn btn-secondary' %><span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="text" id="myName" onkeyup="myFilterFunction()" placeholder="Filter by name"></span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></h4>
+
+<div class="table-responsive">
+  <table class="table table-hover" id="myTable">            
+    <thead class="thead-dark">
+      <tr>
+           <th style="width:10%;"> </th>
+           <th style="width:20%;">Name</th>
+           <th style="width:10%;">Type</th>
+           <th style="width:60%;">Description</th>                   
+      </tr>
+    </thead>
+
+    <tbody>
+        <% @activities.each do |activity| %>
+<!-- for each instance of object  - create a temp variable and  put the  contents on the table -->
+            <tr onclick="'activities/'+ myClickedRow(this);">         
+                <td></td>
+                <!-- links to a view with path /activities from button-->
+                <td><%= activity.name %></td>   
+                <td><%= activity.activity_type %></td>                    
+                <td><%= activity.description %></td>                           
+            </tr>
+        <% end %> 
+    </tbody>
+  </table>
+</div>
+
+<!-- Filter table script -->
+
+
+
+
+
+<script>
+function myFilterFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i, mycolumn;
+  mycolumn = 1
+
+  input = document.getElementById("myName");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+</script>
+
+
+<script>
+function myClickedRow(x) {
+    return x.rowIndex+1;
+}
+</script>         
+
+
+<script>
+  $('tr').click(function() {
+    location.href = '/activities/'+ myClickedRow(this);
+});
+</script> 

@@ -1,0 +1,94 @@
+<%= form_with(model: program, local: true) do |f| %>
+  <% if program.errors.any? %>
+      <div id="error_explanation">
+         <h2><%= pluralize(program.errors.count, "error") %> prohibited this program from being saved:</h2>
+
+        <ul>
+          <% program.errors.full_messages.each do |message| %>
+             <li><%= message %></li>
+           <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+
+  <div class="form-style-9">
+    <div class="form-style-9-heading"><h1>Program</h1>
+    </div> 
+    <ul>
+      <li>
+        <%= f.label :name %>
+        <%= f.text_field :name, id: :program_name, class: 'field-style field-full align-none' %>
+      </li>
+      <li>
+        <%= f.label :description %>
+        <%= f.text_field :description, id: :program_description, class: 'field-style field-full align-none'  %>
+      </li>
+      <li>
+        <%= f.label :leader_name %>
+      <!--collection_select(object, method, collection, value_method, text_method, options = {}, html_options = {})  -->
+<!--  collection_select(:post, :author_id, Author.all, :id, :name_with_initial, prompt: true)-->
+ <!--   %= f.collection_select(:program, :leader_id, Leader.all,  :name, {}, prompt: true)  %>  -->
+    <!--%= f.collection_select :program, :leader_id, Leader.all, :id, :name, include_blank: true %>  -->
+    
+    <%= f.collection_select(
+                          :leader_id,
+                            Leader.all,
+                            :id,
+                            :name,
+                            { :include_blank => "Please select" })
+    %>
+      </li>
+      <li>
+        <%= f.label "Start Date"%>&nbsp;
+        <%= f.date_field :program_start_date, id: :program_program_start_date, class: 'field-style field-short align-none' %><br>
+      </li>
+      <li>
+        <%= f.label "Weekly times" %>&nbsp;
+        <%= f.time_select :start_time, id: :program_start_time, class: 'field-style field-full align-none'  %>&nbsp;&nbsp;until&nbsp;&nbsp;
+        <%= f.time_select :finish_time, id: :program_finsh_time, class: 'field-style field-full align-none'  %>
+      </li>
+      <li>
+        <%= f.label :theme %>
+        <%= f.text_field :theme, id: :program_theme, class: 'field-style field-full align-none'  %>
+      </li>
+      <li>
+        <%= f.label :details %>
+        <%= f.text_area :details, id: :program_details, class: 'field-style field-full align-none'  %> 
+      </li>
+      <li>
+        <%= f.label :status %>&nbsp;
+        <%= f.text_field :status, id: :program_status, class: 'field-style field-short align-none'  %> 
+      </li>
+      <p>&nbsp;</p>
+      <li>
+        <div class="actions">
+           <%= f.submit %>
+         </div>
+      </li>
+  </ul>
+
+</div> <!-- end primary form styling -->
+
+
+<div class="form-style-9">
+    <div class="form-style-9-heading"><h1>Program Events</h1>
+    </div>
+    <ul>
+
+    <%= f.fields_for :programevents do |builder| %>
+      <%=  render 'programevent_fields' , :f => builder %>
+    <% end %>
+
+      <li>
+         <div class="actions">
+         <!-- pass text of link, the parent form builder, association name, html stuff like on link_to-->
+           <%= link_to_add_association 'Add Event', f, :programevents, class: 'btn btn-primary', partial: 'programevent_fields' %> 
+           <%= f.submit %>
+         </div>
+      </li>
+    </ul>
+</div> <!-- end nested form styling -->
+
+
+<% end %> <!-- end primary form -->

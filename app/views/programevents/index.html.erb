@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Programevents</h1>
+
+<table class="table table-hover" id="myTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Program</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @programevents.each do |programevent| %>
+      <tr>
+        <td><%= programevent.name %></td>
+        <td><%= programevent.program.name %></td>
+        <td><%= programevent.description %></td>
+        
+        <td><%= link_to 'Show', programevent %></td>
+        <td><%= link_to 'Edit', edit_programevent_path(programevent) %></td>
+        <td><%= link_to 'Destroy', programevent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Programevent', new_programevent_path %>

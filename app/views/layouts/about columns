@@ -1,0 +1,30 @@
+-the numbers (1-12) represent a portion of the total width of any div
+-all divs are divided into 12 columns
+-col-*-6 spans 6 of 12 columns (half the width)
+-col-*-12 spans 12 of 12 columns (the entire width), etc
+
+You can also nest columns within columns, (best with a .row wrapper around them) such as:
+
+<div class="col-xs-6">
+  <div class="row">
+    <div class="col-xs-4">Column 1-a</div>
+    <div class="col-xs-8">Column 1-b</div>
+  </div>
+</div>
+<div class="col-xs-6">
+  <div class="row">
+    <div class="col-xs-2">Column 2-a</div>
+    <div class="col-xs-10">Column 2-b</div>
+  </div>
+</div>
+
+Each set of nested divs also span up to 12 columns of their parent div. NOTE: Since each .col class has 15px padding on either side, you should usually wrap nested columns in a .row, which has -15px margins. This avoids duplicating the padding, and keeps the content lined up between nested and non-nested col classes.
+
+-- You didn't specifically ask about the xs, sm, md, lg usage, but they go hand-in-hand so I can't help but touch on it...
+
+In short, they are used to define at which screen size that class should apply:
+
+xs = extra small screens (mobile phones)
+sm = small screens (tablets)
+md = medium screens (some desktops)
+lg = large screens (remaining desktops)

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+     <%= csrf_meta_tags %>
+     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</head>
+
+<body>
+
+ <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        NPBC
+                    </a>
+                </li>
+                <li>
+                    <a href="/students"><i class="fas fa-home fa-sm"></i>&nbsp;&nbsp;Students</a>
+                </li>
+                <li>
+                    <a href="/programs"><i class="fas fa-clipboard fa-sm"></i>&nbsp;&nbsp;Programs</a>
+                </li>
+                <li>
+                    <a href="/activities"><i class="fas fa-table-tennis fa-sm"></i>&nbsp;&nbsp;Activities</a>
+                </li>
+                <li>
+                    <a href="/resources"><i class="fas fa-file-alt fa-sm"></i>&nbsp;&nbsp;Resources</a>
+                </li>         
+
+                <li>
+                    <a href="/leaders"><i class="fas fa-child fa-sm"></i>&nbsp;&nbsp;Leaders</a>
+                </li>
+                
+                <li><a href="#">Separated link</a></li>
+              
+
+                <li>
+                    <a href="/events"><i class="fas fa-info fa-sm"></i>&nbsp;&nbsp;Events</a>
+                </li>
+
+
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+     <!--   <li><a href="#">Link</a></li>-->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+     
+      
+      <!-- Sidebar Links -->
+        <ul class="list-unstyled components">
+
+            <li><!-- Link with dropdown items -->
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">People 2</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li><a href="#">&nbsp;&nbsp;Leaders</a></li>
+                    <li><a href="#">&nbsp;&nbsp;Students</a></li>
+                    <li><a href="#">&nbsp;&nbsp;Page</a></li>
+                </ul>
+        </ul>
+                <li>
+                    <a href="/contacts"><i class="fas fa-address-book fa-sm"></i>&nbsp;&nbsp;Contact</a>
+                </li>
+                <li>
+                    <a href="/help"><i class="fas fa-question-circle fa-sm"></i>&nbsp;&nbsp;Help</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Extreme Header</h1>
+                <p>Extreme Theme or says........</p>
+                <!--<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>-->
+                <%= yield(:search) %>
+                <%= yield %>
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript 
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+
+
+    <script src="/assets/jquery-3.2.1.min.js"></script>  
+    <script src="/assets/bootstrap.min.js"></script>
+   
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
+

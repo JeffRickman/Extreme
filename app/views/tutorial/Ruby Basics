@@ -1,0 +1,114 @@
+Ruby Basics
+
+Variables
+The first character indicates the scope:
+
+Local variables - lowercase letter or underscore e.g. post
+Instance variables - @  e.g. @post belongs to obect or instance of post class 
+In class scope, instance variables belong to the object that is the class
+To define instance variables on the objects that belong to the class, use @ inside initialize() - e.g. initialise(@post)
+
+---Classes, Objects and Variables---
+
+class Song               # Class starts with capital
+  def initialize(name, artist, duration)  
+                         # methods start with lowwer case
+                         # initialize is a special method
+                         #How it will initalise on the new method in your controller
+    @name     = name     # the instance name is inialised (uses local parametre) 
+    @artist   = artist
+    @duration = duration
+  end
+end
+
+aSong = Song.new("Bicylops", "Fleck", 260)
+aSong.inspect
+    → "#<Song:0x401b4924 @duration=260, @artist=\"Fleck\", @name=\"Bicylops\">"
+
+
+---Attributes---
+class Song
+  attr_reader :name, :artist, :duration  
+      # these : attributes define accessor methods like
+      # def name
+      #    @name
+      # end
+end
+aSong = Song.new("Bicylops", "Fleck", 260)
+aSong.artist → "Fleck"
+
+---Methods---
+class TheClass
+  def instMeth              # instance method
+  end
+
+  def TheClass.classMeth     # class method
+  end
+end
+
+e.g.
+song2 = Song.new("The Calling", "Santana", 468)  
+SongList.isTooLong(song2) → true     #class method 
+
+
+-- Binding a Form to an Object ---
+app/controllers/articles_controller.rb:
+  def new
+    @article = Article.new
+  end
+The corresponding view app/views/articles/new.html.erb using form_for looks like this:
+
+<%= form_for @article, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+   # @article is the object being edited
+   # url - the routing to run the create method html - the view (form)
+   # the form_for yields a form builder (f) object
+   # methods are called on this f object
+  <%= f.text_field :title %>
+  <%= f.text_area :body, size: "60x12" %>
+  <%= f.submit "Create" %>
+<% end %>
+
+This produces html to display the form with title, body and button linked to create
+
+
+--- Model ---
+
+Create a new table in Rails
+
+bin/rails g model Product name:string:index sku:string{10}:uniq count:integer description:text supplier:references popularity:float 'price:decimal{10,2}' available:boolean availableSince:datetime image:binary
+Resulting migrations:
+
+# changes Product to Products table
+  
+class CreateProducts < ActiveRecord::Migration
+  def change
+    create_table :products do |t|
+      t.string :name
+      t.string :sku, limit: 10
+      t.integer :count
+      t.text :description
+      t.references :supplier, index: true, foreign_key: true
+      t.float :popularity
+      t.decimal :price, precision: 10, scale: 2
+      t.boolean :available
+      t.datetime :availableSince
+      t.binary :image
+
+      t.timestamps null: false
+    end
+    add_index :products, :name
+    add_index :products, :sku, unique: true
+  end
+end
+
+
+
+
+
+
+Class variables - @@ - variable that is shared by all sub-classes of a parent class
+Global variables - $
+Constants - uppercase letter  e.g. MYCONSTANT = "Monday"
+
+
+

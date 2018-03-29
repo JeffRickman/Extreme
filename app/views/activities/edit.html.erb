@@ -1,0 +1,37 @@
+<h1>Edit Activities</h1>
+
+
+<div id="main-block">
+
+<%= form_for :activity, url: activity_path(@activity), method: :patch do |f| %>
+    <% if @activity.errors.any? %>
+      <% @activity.errors.full_messages.each do |msg| %>
+           <div class="alert alert-danger"> <%= msg %> </div>
+    <% end %>
+<% end %>
+
+  <label><span><%= f.label :Name %><br> <span class="required">*</span></span>
+     <%= f.text_field :name %></span></label>
+  <p><%= f.text_area :description %></p>
+  <p><%= f.select :activity_type, ['Game','Craft'] %></p>
+
+  <p><%= f.text_area :details, size: "60x12" %></p>
+  <p><%= f.submit "Create" %></p>
+
+
+</div>
+
+<div id="right-block">
+      <h3>Heading 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      </p>
+</div>
+
+
+
+
+
+ <% end %>
+
+

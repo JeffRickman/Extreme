@@ -1,0 +1,91 @@
+
+ <div class="form-style-9">
+    <div class="form-style-9-heading"><h1>Program</h1>
+    </div> 
+    <ul>
+      <li>
+        <strong>Name:</strong>&nbsp;
+        <%= @program.name  %>
+      </li>
+      <li>
+        <strong>Description:</strong>&nbsp;
+        <%= @program.description %>
+      </li>
+       <li>
+        <strong>Leader:</strong>&nbsp;
+        <%= @program.leader_id %>
+      </li>
+      <li>
+        <strong>Program Start Date:</strong>&nbsp;
+        <%= @program.program_start_date.strftime("%B %d, %Y") %><br>
+      </li>
+      <li>
+        <strong>Weekly Times:</strong>&nbsp;
+        <%= @program.start_time.strftime("%H:%M %P") %>&nbsp;&nbsp;until&nbsp;&nbsp;
+        <%= @program.finish_time.strftime("%H:%M %P")%>
+      </li>
+      <li>
+        <strong>Theme:</strong>&nbsp;
+        <%= @program.theme  %>
+      </li>
+      <li>
+        <strong>Program Notes:</strong>&nbsp;
+        <%= @program.details  %> 
+      </li>
+      <li>
+       <strong>Status:</strong>&nbsp;
+        <%= @program.status %> 
+      </li>
+      <p>&nbsp;</p>
+
+  </ul>
+
+<%= link_to 'Edit', edit_program_path(@program), class: 'btn btn-primary' %> 
+<%= link_to 'Back', programs_path, class: 'btn btn-primary' %>
+</div> <!-- end primary form styling -->
+
+
+<p id="notice"><%= notice %></p>
+
+
+<% if @program.programevents.any? %>
+
+    <div class="form-style-9">
+      <table class="table table-hover" id="myTable">            
+        <thead class="thead-dark">
+          <div class="form-style-9-heading"><h1>Event Schedule</h1>
+          </div> 
+          <tr>
+               <th style="width:5%;">Week</th>
+               <th style="width:10%;">Date</th>
+               <th style="width:35%;">Event</th>
+               <th style="width:35%;">Leader</th>                   
+          </tr>
+        </thead>
+
+        <tbody>
+    <!-- for each instance of object  - create a temp variable and  put the  contents on the table -->
+            <% @program.programevents.each_with_index do |e, index| %>
+                <tr>         
+                    <td><%= "#{index+1}" %></td>
+                    <td><%= e.event_date.strftime("%B %d, %Y")  %></td>                      
+                    <td><%= e.name %></td>      
+                    <td><%= e.leader_name %></td>      
+                    <td><a href=<%= edit_program_path(@program) %>><i class="fas fa-edit fa-lg"></i>&nbsp;</a></td>
+                    <td><a href="/programs"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a></td>                                      
+                </tr>
+             <% end %>  <!-- end do -->                
+        </tbody>
+      </table>
+   <!--    = link_to programevent.name, programevent %>  -->
+   
+<% else %>
+   <p>none available</p>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_program_path(@program), class: 'btn btn-primary' %> 
+<%= link_to 'Back', programs_path, class: 'btn btn-primary' %>
+</div>
+

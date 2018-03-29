@@ -1,0 +1,47 @@
+<%= form_with(model: craft, local: true) do |form| %>
+  <% if craft.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(craft.errors.count, "error") %> prohibited this craft from being saved:</h2>
+
+      <ul>
+      <% craft.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :craft_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category, id: :craft_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :copyright %>
+    <%= form.text_field :copyright, id: :craft_copyright %>
+  </div>
+
+  <div class="field">
+    <%= form.label :equipment %>
+    <%= form.text_area :equipment, id: :craft_equipment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :instructions %>
+    <%= form.text_area :instructions, id: :craft_instructions %>
+  </div>
+
+  <div class="field">
+    <%= form.label :activity_id %>
+    <%= form.text_field :activity_id, id: :craft_activity_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

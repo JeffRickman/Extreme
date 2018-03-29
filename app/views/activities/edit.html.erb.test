@@ -1,0 +1,105 @@
+<h1>Edit Activities</h1>
+<%= form_for :activity, url: activity_path(@activity), method: :patch do |f| %>
+    <% if @activity.errors.any? %>
+      <% @activity.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger"> <%= msg %> </div>
+    <% end %>
+
+<% end %>
+
+
+<!-- Form aligned with form stylesheet 2 -->
+<div class="form-style-2">
+<div class="form-style-2-heading">Provide Activity Details</div>
+<form action="" method="patch">
+
+<!-- Form field definitions -->
+<label for="field1" class ="input-field" id="name" maxlength="4"><span>Name <span class="required">*</span></span><%= f.text_field :name %> </label>
+
+<label for="field2" class ="input-field" id="decription" maxlength="50"><span>Description<span class="required">*</span></span><%= f.text_area :description%></label>
+
+<label for="field3"><span>Type</span>
+  <select name="activity[activity_type]" class="select-field"> 
+    <option value="Game">Game</option>
+    <option value="Kids Talk">Kids Talk</option>
+    <option value="Craft">Craft</option>
+    <option value="Outing">Outing</option>
+    <option value="Prayer">Prayer</option>
+    <option value="Other">Other</option>
+</select></label>
+
+<label for="field4" class ="textarea-field" ><span>Details <span class="required">*</span></span><%= f.text_area :details %> </label>
+
+<label><input type="submit" value="Submit" /></label>
+
+</form>
+</div>
+</div>
+
+
+<!-- Test to show page table -->
+<div id="main-block">
+<form class="my-form">
+      <div class="form-group">
+        <label>Name: </label>
+        <input type="text" name="name">
+           <%= f.label :name %><br>
+           <%= f.text_area(:name, {:class => 'form-control'}) %>
+      </div>
+      <div class="form-group">
+        <label>Email: </label>
+        <input type="text" name="email">
+      </div>
+      <div class="form-group">
+        <label>Message: </label>
+        <textarea name="message"></textarea>
+      </div>
+      <input class="button" type="submit" value="Submit" name="">
+</form>
+
+<!-- Test to show page blocks -->
+</div>
+
+    
+<!-- End of Form -->
+
+
+
+<!-- Test to show form helpers again -->
+<div id="main-block">
+
+<%= form_for :activity, url: activity_path(@activity), method: :patch do |f| %>
+    <% if @activity.errors.any? %>
+      <% @activity.errors.full_messages.each do |msg| %>
+           <div class="alert alert-danger"> <%= msg %> </div>
+    <% end %>
+
+  <%= f.text_field :name %>
+  <%= f.text_area :description, size: "60x12" %>
+  <%= f.select_tag(:activity_type, options_for_select(['Game', Game], 
+  ['Craft', Craft])) %>
+  <%= f.text_area :details, size: "60x12" %>
+  <%= f.submit "Create" %>
+<% end %>
+
+<!-- Test to show page blocks -->
+
+
+</div>
+
+    <div id="right-block">
+      <h3>Heading 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      </p>
+    </div>
+
+<!-- End of Form -->
+
+
+
+
+<% end %>
+
+
+

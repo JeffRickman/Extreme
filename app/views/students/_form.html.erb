@@ -1,0 +1,87 @@
+<%= form_with(model: student, local: true) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="form-style-2">
+
+
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, id: :student_name %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :dob %>
+      <%= form.date_select :dob, id: :student_dob %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :sex %>
+      <%= form.text_field :sex, id: :student_sex %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :address_l1ne1 %>
+      <%= form.text_field :address_l1ne1, id: :student_address_l1ne1 %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :address_line2 %>
+      <%= form.text_field :address_line2, id: :student_address_line2 %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :diet_status %>
+      <%= form.check_box :diet_status, id: :student_diet_status %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :diet %>
+      <%= form.text_field :diet, id: :student_diet %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :allergy_status %>
+      <%= form.check_box :allergy_status, id: :student_allergy_status %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :allergy %>
+      <%= form.text_field :allergy, id: :student_allergy %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :parent_contact %>
+      <%= form.text_field :parent_contact, id: :student_parent_contact %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :parent_phone %>
+      <%= form.text_field :parent_phone, id: :student_parent_phone %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :parent_email %>
+      <%= form.text_field :parent_email, id: :student_parent_email %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :status %>
+      <%= form.text_field :status, id: :student_status %>
+    </div>
+    <div> &nbsp;<div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+    <div> &nbsp;<div>
+</div>
+<% end %>

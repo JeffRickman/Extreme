@@ -1,0 +1,20 @@
+ <div class="nested-fields">    
+     <li>  
+        <%= f.text_field :name, placeholder: "Event Name", class: 'field-style field-short align-none' %>&nbsp;&nbsp;&nbsp;
+        <%= f.date_field :event_date, placeholder: "Date", class: 'field-style field-mini align-none' %>&nbsp;&nbsp;&nbsp;
+        <%= f.text_field :leader_name, placeholder: "Leader", class: 'field-style field-short align-none' %>
+      </li>
+      <li>
+        <%= f.text_field :description, placeholder: "Description", class: 'field-style field-full align-none'%>
+      </li>
+      <li>
+        Remove Event&nbsp;&nbsp;&nbsp;<%= f.check_box :_destroy %>
+        <!-- programevents.label :_destroy, 'remove' %>-->
+      </li>
+        <!-- Cocoon helper accepts text to show on link, form object, html options similar to link_to-->
+      <l1>
+      <% link_to_remove_association "remove event", f %>
+      </li>
+        <li>&nbsp;
+      </li>
+  </div>

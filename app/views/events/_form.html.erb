@@ -1,0 +1,113 @@
+<%= form_with(model: event, local: true) do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="form-style-2">
+
+<% if false %>
+
+The scaffold form is difficult to use, because it requires knowledge of the program id field to create a new event. Replace the id text field in the dependent model with a more helpful dropdown menu. 
+ 
+Example:   Replace the following code in app/views/awards/_form.html.erb
+<%= f.label :student_id %><br />
+<%= f.text_field :student_id %>
+with this code:
+Student Name<br />
+<%= f.select :student_id, @options %>
+
+Add this code to both of the new and edit methods in the awards controller (app/controllers/awards_controller.rb). Add it immediately after
+@award = Award.new
+in the new method and immediately after
+@award = Award.find(params[:id])
+in the edit method.
+@options = Student.find(:all, 
+   :order => "last_name, first_name").
+   collect do |s|
+      [s.name, s.id]
+   end
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="field">
+      <%= form.label :name %>  
+      <%= form.text_field :name, id: :event_name %> 
+   
+    </div>
+
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_field :description, id: :event_description %>
+    </div>
+
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :event_date %>
+      <%= form.date_select :event_date, id: :event_event_date %>
+    </div>
+
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :address_line1 %>
+      <%= form.text_field :address_line1, id: :event_address_line1 %>
+    </div>
+
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :address_line2 %>
+      <%= form.text_field :address_line2, id: :event_address_line2 %>
+    </div>
+
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :leader_name %>
+      <%= form.text_field :leader_name, id: :event_leader_name %>
+    </div>
+
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :leader_phone %>
+      <%= form.text_field :leader_phone, id: :event_leader_phone %>
+    </div>
+
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :details %>
+      <%= form.text_area :details, id: :event_details %>
+    </div>
+
+    <div> &nbsp;<div>
+    <div class="field">
+      <%= form.label :status %>
+      <%= form.text_field :status, id: :event_status %>
+    </div>
+
+    <div> &nbsp;<div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+
+    <div> &nbsp;<div>
+
+  </div>
+<% end %>
